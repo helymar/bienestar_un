@@ -1,0 +1,81 @@
+:root {
+  --box-shadow: 10px 4px 10px rgba(0, 0, 0, 0.25);
+  --glass: rgba(255, 255, 255, 0.5);
+  --primary: #0200AB;
+  --primaryDark: #01007C;
+  --secondary: #00A1AB;
+  --cardColor: #F4F3FF;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--primaryDark);
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+h1 {
+  font-size: 64px;
+}
+
+h2 {
+  font-size: 48px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.App {
+  font-family: 'Montserrat', sans-serif;
+  background: radial-gradient(50% 50% at 50% 50%, #ECFEFF 0%, #F7F7FF 100%);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.AppGlass {
+  display: grid;
+  width: 97%;
+  height: 97%;
+  background-color: #ffffff;
+  overflow: hidden;
+  grid-template-columns: 6% auto;
+  border-radius: 20px;
+  box-shadow: var(--box-shadow);
+}
+
+input[type=submit].gradient-button,
+button.gradient-button {
+  background: linear-gradient(95deg, var(--primary) 0%, var(--secondary) 50%, var(--primary) 100%);
+  background-size: 200% 200%;
+  border: none;
+  border-radius: 6px;
+  color: #FFF;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  height: 40px;
+  transition: .7s ease-in-out;
+  width: 130px;
+  box-shadow: 0 0;
+}
+
+input[type=submit].gradient-button,
+button.gradient-button:hover {
+  background-position: 75% 100%;
+  box-shadow: 0 2px 5px gray;
+}

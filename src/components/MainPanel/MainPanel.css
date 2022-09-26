@@ -1,0 +1,15 @@
+.MainPanel {
+    display: grid;
+    grid-template-rows: 10% 90%;
+    padding: 20px;
+}
+
+.MainPanel>.row {
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+.MainPanel .col.twice {
+    display: grid;
+    grid-template-rows: 50% 50%;
+}

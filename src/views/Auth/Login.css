@@ -1,0 +1,34 @@
+.Login {
+    background-color: white;
+    border: 2px solid var(--primary);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    width: 620px;
+}
+
+.Login .col {
+    height: 100%;
+    justify-content: center;
+}
+
+.Login .row {
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.Login .col h3 {
+    padding-bottom: 40px;
+}
+
+.Login h2.thin {
+    font-weight: normal;
+}
+
+.Login .form-inner {
+    margin-block: 20px;
+}
+
+.Login p.error {
+    color: red;
+}
