@@ -6,6 +6,8 @@ import './Login.css'
 import logo from 'assets/logo.svg'
 import AuthContext from 'context/AuthProvider'
 import FormField from 'components/FormField'
+import { useCookies } from 'react-cookie';
+
 
 const Login = () => {
     const { setAuth } = useContext(AuthContext);
@@ -16,6 +18,8 @@ const Login = () => {
     const [success, setSuccess] = useState(false);
     const [showLogin, setShowLogin] = useState(true);
     const [errMsg, setErrMsg] = useState('');
+    const [cookies, setCookie] = useCookies(['Token']);
+
     useEffect(() => {
         userRef.current.focus();
     }, [])
@@ -28,15 +32,17 @@ const Login = () => {
     const login = async (e) => {
         e.preventDefault();
         try {
-            let response = await axios.post('users/login',
+            let response = await axios.post('accounts/users/login/',
                 {
                     username: user,
                     password: pwd
                 }
             )
-            let accessToken = response.data.data.accessToken;
+            let accessToken = response.data.token;
+            
             setAuth({ user, accessToken });
-            localStorage.setItem('user', JSON.stringify({ ...response.data.data, user: user })); // TODO remove this, is not safe
+            sessionStorage.setItem('accessToken', accessToken);
+            sessionStorage.setItem('user', user ); // TODO remove this, is not safe
             setUser('');
             setPwd('');
             setSuccess(true);
@@ -57,7 +63,7 @@ const Login = () => {
         e.preventDefault();
         const targets = e.target;
         try {
-            const response = await axios.post('users',
+            const response = await axios.post('accounts/register/register/',
                 {
                     name: targets[0].value,
                     username: targets[1].value,

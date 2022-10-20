@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { useCookies } from 'react-cookie';
 
 import 'App.css';
 import Activities from 'views/Activities';
@@ -15,7 +16,13 @@ import Users from 'views/Users';
 
 
 function App() {
+  const [cookies, setCookie] = useCookies(['name']);
   const { auth } = useContext(AuthContext);
+ 
+
+  function onChange(newName) {
+    setCookie('name', newName, { path: '/' });
+  }
   return (
     <section className='App'>
       {auth.user == null ?

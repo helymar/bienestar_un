@@ -25,8 +25,9 @@ const Users = () => {
 
     const onLoad = async e => {
         const config = { 'headers': { 'Authorization': 'Bearer ' + auth.accessToken } }
-        const response = (await axios.get('users/all', config)).data;
-        setData(response.data);
+        const response = (await axios.get('accounts/users/detail_user/', config)).data;
+        console.log(response)
+        setData(response);
     }
 
     useEffect(() => {

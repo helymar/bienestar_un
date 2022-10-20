@@ -10,7 +10,6 @@ const StatisticCard = (props) => {
             <h2>{props.stat.secondNumber}</h2>
             <p>{props.stat.secondText}</p>
         </div>
-        <button className='gradient-button'>Filtrar</button>
     </div>
     return (
         <Card title={props.stat.title} content={content} />

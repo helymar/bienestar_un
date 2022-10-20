@@ -7,6 +7,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import './index.css';
 import App from './App';
 import { AuthProvider } from 'context/AuthProvider';
+import { CookiesProvider } from 'react-cookie';
 
 const theme = createTheme({
   palette: {
@@ -27,6 +28,7 @@ const theme = createTheme({
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <CookiesProvider >
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <AuthProvider>
@@ -34,6 +36,7 @@ root.render(
       </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>
+  </CookiesProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
