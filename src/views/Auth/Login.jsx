@@ -13,8 +13,8 @@ const Login = () => {
     const { setAuth } = useContext(AuthContext);
     const userRef = useRef();
 
-    const [user, setUser] = useState('joelborrero');  // TODO remove this
-    const [pwd, setPwd] = useState('123');
+    const [user, setUser] = useState('');  // TODO remove this
+    const [pwd, setPwd] = useState('');
     const [success, setSuccess] = useState(false);
     const [showLogin, setShowLogin] = useState(true);
     const [errMsg, setErrMsg] = useState('');
@@ -120,7 +120,8 @@ const Login = () => {
                         <p className='error'>{errMsg}</p>
                         <input className='gradient-button' type="submit" value="Iniciar sesión" />
                     </form>
-                    <p>¿Aún no tienes una cuenta? <a className='prose prose-a:text-blue-600 hover:prose-a:text-blue-500' onClick={() => setShowLogin(!showLogin)}>Registrate</a></p>
+                    <p>¿Aún no tienes una cuenta? <a className='prose prose-a:text-blue-600 hover:prose-a:text-blue-500' href='#' onClick={() => setShowLogin(!showLogin)}>Registrate</a></p>
+                    <p>¿Olvidaste tu contraseña? <a className='prose prose-a:text-blue-600 hover:prose-a:text-blue-500' href='/iforgot'>Recuperala</a></p>
                 </> : <>
                     <form onSubmit={register}>
                         <FormField key='name' label='Nombre:' />
@@ -131,7 +132,7 @@ const Login = () => {
                         <FormField key='confirm_password' label='Confirmar contraseña:' />
                         <input className='gradient-button' type="submit" value="Registrarse" />
                     </form>
-                    <p>¿Ya tienes una cuenta? <a onClick={() => setShowLogin(!showLogin)}>Inicia sesión</a></p>
+                    <p>¿Ya tienes una cuenta? <a href='#' onClick={() => setShowLogin(!showLogin)}>Inicia sesión</a></p>
                 </>
                 }
             </div>

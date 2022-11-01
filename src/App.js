@@ -9,6 +9,7 @@ import AuthContext from 'context/AuthProvider';
 import Dashboard from 'views/Home';
 import Groups from 'views/Groups';
 import Login from 'views/Auth/Login';
+import Iforgot from 'views/Auth/iforgot';
 import Reports from 'views/Reports';
 import Settings from 'views/Settings';
 import Sidebar from 'components/sidebar/Sidebar';
@@ -26,7 +27,17 @@ function App() {
   return (
     <section className='App'>
       {auth.user == null ?
-        <Login /> :
+       
+        (
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<Login />} />
+            <Route path='/iforgot' element={<Iforgot />} />
+          </Routes>
+        </BrowserRouter>
+        )
+        :
+
         (
           <section className='AppGlass'>
             <BrowserRouter>

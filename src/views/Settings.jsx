@@ -23,7 +23,7 @@ const Settings = () => {
     }
     const { auth } = useContext(AuthContext);
     const logout = async (e) => {
-        await axios.post('users/logout', {}, { 'headers': { 'Authorization': 'Bearer ' + auth.accessToken } });
+        await axios.post('accounts/users/logout/', {}, { 'headers': { 'Authorization': 'Bearer ' + auth.accessToken } });
         setAuth({});
         localStorage.removeItem('user');
 
