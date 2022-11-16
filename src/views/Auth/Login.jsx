@@ -5,7 +5,6 @@ import axios from 'context/axios'
 import './Login.css'
 import logo from 'assets/logo.svg'
 import AuthContext from 'context/AuthProvider'
-import FormField from 'components/FormField'
 import { useCookies } from 'react-cookie';
 
 
@@ -20,9 +19,9 @@ const Login = () => {
     const [errMsg, setErrMsg] = useState('');
     const [cookies, setCookie] = useCookies(['Token']);
 
-    useEffect(() => {
-        userRef.current.focus();
-    }, [])
+    // useEffect(() => {
+    //     userRef.current.focus();
+    // }, [])
 
     useEffect(() => {
         setErrMsg('');
@@ -103,36 +102,72 @@ const Login = () => {
                 </div>
                 {showLogin ? <>
                     <form onSubmit={login}>
-                        <div className="form-inner">
-                            <label htmlFor="username">Username: </label>
-                            <input type="text" name='username' id='username' ref={userRef} onChange={(e) => setUser(e.target.value)}
+
+                        <div className="flex items-start mt-2 mb-5 flex-col">
+                            <label>Username: </label>
+                            <input className='h-8 w-full rounded-md border border-slate-300 text-sm pl-2 bg-transparent outline-blue-600 shadow-sm' type="text" name='username' id='username' ref={userRef} onChange={(e) => setUser(e.target.value)}
                                 value={user}
                                 required
                             />
                         </div>
-                        <div className="form-inner">
-                            <label htmlFor="password">Password: </label>
-                            <input type="password" name='password' id='password' onChange={(e) => setPwd(e.target.value)}
+
+                        <div className="flex items-start mt-2 mb-5 flex-col">
+                            <label>Password: </label>
+                            <input className='h-8 w-full rounded-md border border-slate-300 text-sm pl-2 bg-transparent outline-blue-600 shadow-sm' type="password" name='password' id='password' onChange={(e) => setPwd(e.target.value)}
                                 value={pwd}
                                 required
                             />
                         </div>
+
                         <p className='error'>{errMsg}</p>
-                        <input className='gradient-button' type="submit" value="Iniciar sesión" />
+                        <input className='mt-2 bg-blue-700 w-full h-10 cursor-pointer text-white rounded-md hover:bg-blue-600 hover:outline outline-2 outline-blue-600 outline-offset-2 text-sm' type="submit" value="Iniciar sesión" />
+                    
                     </form>
-                    <p>¿Aún no tienes una cuenta? <a className='prose prose-a:text-blue-600 hover:prose-a:text-blue-500' href='#' onClick={() => setShowLogin(!showLogin)}>Registrate</a></p>
-                    <p>¿Olvidaste tu contraseña? <a className='prose prose-a:text-blue-600 hover:prose-a:text-blue-500' href='/iforgot'>Recuperala</a></p>
+                    <p className='mt-5'>¿Aún no tienes una cuenta? <a className='prose prose-a:text-blue-600 underline text-blue-500' href='#' onClick={() => setShowLogin(!showLogin)}>Registrate</a></p>
+                    <p className='mt-5'>¿Olvidaste tu contraseña? <a className='prose prose-a:text-blue-600 underline text-blue-500' href='/iforgot'>Recuperala</a></p>
                 </> : <>
-                    <form onSubmit={register}>
-                        <FormField key='name' label='Nombre:' />
-                        <FormField key='username' label='Nombre de usuario:' />
-                        <FormField key='ciu' label='Código:' />
-                        <FormField key='email' label='Email:' />
-                        <FormField key='password' label='Contraseña:' />
-                        <FormField key='confirm_password' label='Confirmar contraseña:' />
-                        <input className='gradient-button' type="submit" value="Registrarse" />
-                    </form>
-                    <p>¿Ya tienes una cuenta? <a href='#' onClick={() => setShowLogin(!showLogin)}>Inicia sesión</a></p>
+
+                    <div id="form" className="block bg-slate-50 p-6 rounded-xl shodow-md shadow-slate-300 w-90">
+                        <form onSubmit={register}>
+
+                            <div id="fullName" className="flex flex-row">
+
+                                <div id="firstName" className="w-1/2 mr-1">
+                                    <label className="text-sm">Nombre</label>
+                                    <input type="text" name="name" className="h-8 w-full rounded-md border border-slate-300 text-sm pl-2 bg-transparent outline-blue-600 shadow-sm"/>
+                                </div>
+                                <div id="lastName" className="w-1/2 mr-1">
+                                    <label className="text-sm">Nombre De Usuario</label>
+                                    <input type="text" name="username" className="h-8 w-full rounded-md border border-slate-300 text-sm pl-2 bg-transparent outline-blue-600 shadow-sm"/>
+                                </div>
+                            </div>
+
+                            <div className='flex items-start mt-2 mb-2 flex-col'>
+                                <label className="text-sm mb-1 mt-1">Código</label>
+                                <input type="emial" name="ciu" className="h-8 w-full rounded-md border border-slate-300 text-sm pl-2 bg-transparent outline-blue-600 shadow-sm"/>
+                            </div>
+                            
+                            <div className='flex items-start mt-2 mb-2 flex-col'>
+                                <label className="text-sm mb-1 mt-1">Email</label>
+                                <input type="emial" name="email" className="h-8 w-full rounded-md border border-slate-300 text-sm pl-2 bg-transparent outline-blue-600 shadow-sm"/>
+                            </div>
+
+                            <div className='flex items-start mt-2 mb-2 flex-col'>
+                                <label className="text-sm mb-1 mt-1">Contraseña</label>
+                                <input type="emial" name="password" className="h-8 w-full rounded-md border border-slate-300 text-sm pl-2 bg-transparent outline-blue-600 shadow-sm"/>
+                            </div>
+
+                            <div className='flex items-start mt-2 mb-2 flex-col'>
+                                <label className="text-sm mb-1 mt-1">Confirmar Contraseña</label>
+                                <input type="emial" name="confirm_password" className="h-8 w-full rounded-md border border-slate-300 text-sm pl-2 bg-transparent outline-blue-600 shadow-sm"/>
+                            </div>
+
+
+                            <input type="submit" name="" className="mt-2 bg-blue-700 w-full h-10 cursor-pointer text-white rounded-md hover:bg-blue-600 hover:outline outline-2 outline-blue-600 outline-offset-2 text-sm"/>
+                            <p className='mt-5'>¿Ya tienes una cuenta? <a className='prose prose-a:text-blue-600 underline text-blue-500' href='#' onClick={() => setShowLogin(!showLogin)}>Inicia sesión</a></p>
+                        
+                        </form>
+                    </div>
                 </>
                 }
             </div>
