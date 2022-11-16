@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react'
 
 import { useContext } from 'react';
 import AuthContext from 'context/AuthProvider';
-import axios from 'context/axios'
-import FormField from 'components/FormField/FormField';
+import axios from 'context/axios';
+import logo from 'assets/logo.svg';
+import FormField from '../components/FormField';
 const Supervisor = () => {
     const { auth } = useContext(AuthContext);
+    const [errMsg, setErrMsg] = useState('');
 
     useEffect(() => {
+        setErrMsg('');
         // eslint-disable-next-line
     }, [])
 
