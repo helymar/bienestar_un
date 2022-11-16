@@ -12,6 +12,8 @@ import Login from 'views/Auth/Login';
 import Iforgot from 'views/Auth/iforgot';
 import Reports from 'views/Reports';
 import Settings from 'views/Settings';
+import Supervisor from 'views/Supervisor';
+import Promoter from 'views/Promoter';
 import Sidebar from 'components/sidebar/Sidebar';
 import Users from 'views/Users';
 
@@ -49,6 +51,8 @@ function App() {
                 <Route path='/activities' element={<Activities />} />
                 <Route path='/reports' element={<Reports />} />
                 <Route path='/settings' element={<Settings />} />
+                <Route path='/supervisor' element={<supervisor />} />
+                <Route path='/promoter' element={<promoter />} />
               </Routes>
             </BrowserRouter>
           </section>

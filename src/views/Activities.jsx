@@ -13,15 +13,15 @@ const Activities = () => {
 
     const onLoad = async e => {
         const config = { 'headers': { 'Authorization': 'Bearer ' + auth.accessToken } }
-        const response = (await axios.get('accounts/request/', config)).data;
+        const response = (await axios.get('accounts/activity/', config)).data;
         console.log(response);
         let contA = 0;
         let contP = 0;
         let contT = 0;
         response.forEach(request => {
-            if (request.status == 'a') contA++;
-            if (request.status == 'p') contP++;
-            if (request.status == 't') contT++;
+            if (request.status === 'a') contA++;
+            if (request.status === 'p') contP++;
+            if (request.status === 't') contT++;
         });
         const card1 = {
             title: 'Recibidas',
@@ -43,10 +43,10 @@ const Activities = () => {
     }
     useEffect(() => {
         onLoad();
+        // eslint-disable-next-line
     }, [])
     return (
         <MainPanel title='Actividades' card1={card1} card2={card2} data={data}  />
     )
 }
-
 export default Activities
