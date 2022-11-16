@@ -28,7 +28,7 @@ function App() {
   }
   return (
     <section className='App'>
-      {auth.user != null ?
+      {auth.user == null ?
        
         (
         <BrowserRouter>

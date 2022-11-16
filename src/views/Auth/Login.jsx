@@ -31,9 +31,9 @@ const Login = () => {
     const login = async (e) => {
         e.preventDefault();
         try {
-            let response = await axios.post('/accounts/auth/login/',
+            let response = await axios.post('accounts/auth/login/',
                 {
-                    username: user,
+                    email: user,
                     password: pwd
                 }
             )
@@ -50,7 +50,7 @@ const Login = () => {
             if (!error?.response) {
                 setErrMsg('No Server Response');
             } else if (error.response?.status === 400) {
-                setErrMsg('Missing Username or Password');
+                setErrMsg('Missing email or Password');
             } else if (error.response?.status === 401) {
                 setErrMsg('Unauthorized');
             } else {
@@ -62,10 +62,10 @@ const Login = () => {
         e.preventDefault();
         const targets = e.target;
         try {
-            const response = await axios.post('accounts/register/register/',
+            const response = await axios.post('accounts/auth/register/',
                 {
                     name: targets[0].value,
-                    username: targets[1].value,
+                    email: targets[1].value,
                     ciu: targets[2].value,
                     email: targets[3].value,
                     password: targets[4].value,
@@ -84,7 +84,7 @@ const Login = () => {
             if (!error?.response) {
                 setErrMsg('No Server Response');
             } else if (error.response?.status === 400) {
-                setErrMsg('Missing Username or Password');
+                setErrMsg('Missing email or Password');
             } else if (error.response?.status === 401) {
                 setErrMsg('Unauthorized');
             } else {
@@ -104,8 +104,8 @@ const Login = () => {
                     <form onSubmit={login}>
 
                         <div className="flex items-start mt-2 mb-5 flex-col">
-                            <label>Username: </label>
-                            <input className='h-8 w-full rounded-md border border-slate-300 text-sm pl-2 bg-transparent outline-blue-600 shadow-sm' type="text" name='username' id='username' ref={userRef} onChange={(e) => setUser(e.target.value)}
+                            <label>Email: </label>
+                            <input className='h-8 w-full rounded-md border border-slate-300 text-sm pl-2 bg-transparent outline-blue-600 shadow-sm' type="text" name='email' id='email' ref={userRef} onChange={(e) => setUser(e.target.value)}
                                 value={user}
                                 required
                             />
@@ -138,7 +138,7 @@ const Login = () => {
                                 </div>
                                 <div id="lastName" className="w-1/2 mr-1">
                                     <label className="text-sm">Nombre De Usuario</label>
-                                    <input type="text" name="username" className="h-8 w-full rounded-md border border-slate-300 text-sm pl-2 bg-transparent outline-blue-600 shadow-sm"/>
+                                        <input type="text" name="email" className="h-8 w-full rounded-md border border-slate-300 text-sm pl-2 bg-transparent outline-blue-600 shadow-sm" />
                                 </div>
                             </div>
 
