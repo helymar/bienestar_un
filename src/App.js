@@ -35,9 +35,9 @@ function App() {
        
         (
         <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<Login />} />
+            <Routes>
             <Route path='/iforgot' element={<Iforgot />} />
+              <Route path='*' element={<Login />} />
           </Routes>
         </BrowserRouter>
         )
@@ -95,12 +95,14 @@ function App() {
             <BrowserRouter>
               <SidebarAdmin />
               <Routes>
-                <Route path='/' element={<Dashboard />} />
                 <Route path='/users' element={<Users />} />
                 <Route path='/groups' element={<Groups />} />
                 <Route path='/activities' element={<Activities />} />
                 <Route path='/reports' element={<Reports />} />
                 <Route path='/settings' element={<Settings />} />
+                <Route path='/supervisor' element={<supervisor />} />
+                <Route path='/promoter' element={<promoter />} />
+                <Route path='*' element={<Dashboard />} />
               </Routes>
             </BrowserRouter>
           </section>

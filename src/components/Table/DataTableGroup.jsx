@@ -10,30 +10,16 @@ function createData(id, name, email, description, active) {
 }
 
 const columns = [
-    { field: 'id', headerName: 'id', width: 150 },
-    { field: 'name', headerName: 'name', width: 150 },
-    { field: 'email', headerName: 'email',  width: 100 },
-    { field: 'description', headerName: 'description'},
-    { field: 'active', headerName: 'active',  type: 'boolean', width: 30 },
+    { field: 'id', headerName: 'Id', width: 50 },
+    { field: 'name', headerName: 'Nombre', width: 200 },
+    { field: 'email', headerName: 'Email', width: 200 },
+    { field: 'active', headerName: 'Activo', type: 'boolean', width: 100 },
 ];
-let rows = [
-    createData(1, 'Jon Snow', 35, 10, 'Promotor', 'Ing. Civil'),
-    createData(2, 'Cersei Lannister', 42, 10, 'Estudiante', 'Admon'),
-    createData(3, 'Jaime Lannister', 45, 10, 'Promotor', 'Derecho'),
-    createData(4, 'Arya Stark', 16, 10, 'Estudiante', 'Derecho'),
-    createData(5, 'Daenerys Targaryen', null, 10, 'Estudiante', 'Derecho'),
-    createData(6, 'Marie Melisandre', 150, 10, 'Promotor', 'Medicina'),
-    createData(7, 'Ferrara Clifford', 44, 10, 'Promotor', 'Derecho'),
-    createData(8, 'Rossini Frances', 36, 10, 'Estudiante', 'Psicología'),
-    createData(9, 'Harvey Roxie', 65, 10, 'Promotor', 'Derecho'),
-    createData(10, 'Taya Kno', 65, 10, 'Estudiante', 'Música'),
-    createData(11, 'Brooke Liger', 65, 10, 'Promotor', 'Música'),
-];
+let rows = [];
 
 
 export default function DataTable(props) {
-    // if (props.data)
-    //     rows = props.data.map((elem) => createData(elem.id, elem.name, elem.email, elem.description, !elem.active));
+    rows = props.data.map((elem) => createData(elem.id, elem.first_name, elem.email, elem.is_active));
     return (
         <article className='Card' >
             <DataGrid
