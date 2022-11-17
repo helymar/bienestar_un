@@ -10,22 +10,24 @@ const Activities = () => {
     const [data, setData] = useState([]);
     const [card1, setCard1] = useState({});
     const [card2, setCard2] = useState({});
+    const [total, setTotal] = useState(0);
+    const config = { 'headers': { 'Authorization': 'Token ' + auth.accessToken } }
+    let contA = 0;
+    let contP = 0;
+    let contT = 0;
 
-    const onLoad = async e => {
-        const config = { 'headers': { 'Authorization': 'Token ' + auth.accessToken } }
-        const response = (await axios.get('accounts/activity/', config)).data;
-        console.log(response);
-        let contA = 0;
-        let contP = 0;
-        let contT = 0;
-        response.forEach(request => {
-            if (request.status === 'a') contA++;
-            if (request.status === 'p') contP++;
-            if (request.status === 't') contT++;
+    async function loadPage(page) {
+        const response = (await axios.get('accounts/activity/?page=' + page, config)).data;
+        response.results.forEach(request => {
+            if (request.status === 'Aprobado') contA++;
+            if (request.status === 'Pendiente') contP++;
+            if (request.status === 'Terminado') contT++;
         });
+        setTotal(response.count);
+        setData(response.results);
         const card1 = {
             title: 'Recibidas',
-            firstNumber: response.length,
+            firstNumber: total,
             firstText: 'Solicitudes recibidas',
             secondNumber: contA,
             secondText: 'Aprobadas'
@@ -39,14 +41,10 @@ const Activities = () => {
         }
         setCard1(card1);
         setCard2(card2);
-        setData(response);
     }
-    useEffect(() => {
-        onLoad();
-        // eslint-disable-next-line
-    }, [])
+    useEffect(() => { loadPage(1); }, [])
     return (
-        <MainPanel title='Actividades' card1={card1} card2={card2} data={data}  />
+        <MainPanel title='Actividades' card1={card1} card2={card2} data={data} loadPage={loadPage} total={total} />
     )
 }
 export default Activities

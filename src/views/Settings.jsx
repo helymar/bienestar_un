@@ -23,10 +23,9 @@ const Settings = () => {
     }
     const { auth } = useContext(AuthContext);
     const logout = async (e) => {
-        await axios.post('accounts/auth/logout/', {}, { 'headers': { 'Authorization': 'Token ' + auth.accessToken } });
+        await axios.post('accounts/auth/logout/', {}, { 'headers': { 'Authorization': 'Token ' + auth.accessToken } }).catch(err => console.log(err));
         setAuth({});
         localStorage.removeItem('user');
-
     };
     const rightContent =
         <div>

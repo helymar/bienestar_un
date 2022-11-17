@@ -19,7 +19,7 @@ const Groups = () => {
 
     const onLoad = async e => {
         const config = { 'headers': { 'Authorization': 'Token ' + auth.accessToken } }
-        const response = (await axios.get('accounts/group/', config)).data;
+        const response = (await axios.get('accounts/?role=grupo', config)).data;
         let cont = 0;
         response.forEach(group => {
             if (group.is_active) cont++;

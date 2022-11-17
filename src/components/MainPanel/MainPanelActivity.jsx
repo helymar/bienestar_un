@@ -16,7 +16,7 @@ const MainPanel = (props) => {
                     <StatisticCard stat={props.card2} />
                 </div>
                 {props.rightContent ? props.rightContent :
-                    <DataTable data={props.data} />}
+                    <DataTable data={props.data} loadPage={props.loadPage} total={props.total} />}
             </div>
         </section>
     )
