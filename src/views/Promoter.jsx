@@ -47,25 +47,24 @@ const Promoter = () => {
         }
     }
     return (
-        <section className='Promoter'>
-            <div className="col">
-                <h3>Registro de horas</h3>
-                <div className="row">
-                    <img src={logo} alt='logo' width='48' />
-                    <h2 className='thin'>Uninorte</h2>
+        <div style={{margin: '10px'}}>
+            <section className='Promoter'>
+                <div className="col">
+                    <h3>Registro de horas</h3>
+                    <form onSubmit={report}>
+                            <FormField key='start_date' label='start_date:' />
+                            <FormField key='end_date' label='end_date' />
+                            <FormField key='was_supervised' label='was_supervised' />
+                            <FormField key='wake_up_calls' label='wake_up_calls:' />
+                            <FormField key='people_called' label='people_called:' />
+                            <FormField key='promoter_notes' label='promoter_notes:' />
+                            <FormField key='zone' label='zone:' />
+                            <input className='gradient-button' type="submit" value="Registrar" />
+                        </form>
                 </div>
-                <form onSubmit={report}>
-                        <FormField key='start_date' label='start_date:' />
-                        <FormField key='end_date' label='end_date' />
-                        <FormField key='was_supervised' label='was_supervised' />
-                        <FormField key='wake_up_calls' label='wake_up_calls:' />
-                        <FormField key='people_called' label='people_called:' />
-                        <FormField key='promoter_notes' label='promoter_notes:' />
-                        <FormField key='zone' label='zone:' />
-                        <input className='gradient-button' type="submit" value="Registrar" />
-                    </form>
-            </div>
-        </section>
+            </section>
+        </div>
+       
     )
 }
 export default Promoter

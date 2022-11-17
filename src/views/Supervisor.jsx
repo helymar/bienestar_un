@@ -4,23 +4,29 @@ import { useContext } from 'react';
 import logo from 'assets/logo.svg'
 import AuthContext from 'context/AuthProvider';
 import axios from 'context/axios'
-import FormField from 'components/Form/Input';
-
+import Input from 'components/Form/Input';
+import FormSelect from 'components/FormSelect';
 
 const Supervisor = () => {
     const { auth } = useContext(AuthContext);
     const [errMsg, setErrMsg] = useState('');
+    const [zone, setzone] = useState({});
+    const config = { 'headers': { 'Authorization': 'Token ' + auth.accessToken } }
 
+    async function loadzones() {
+        const response = (await axios.get('/promoter/zone/', config)).data;
+        setzone(response);
+    }
     useEffect(() => {
+        loadzones();
         // eslint-disable-next-line
     }, [])
 
     const report = async (e) => {
-        const config = { 'headers': { 'Authorization': 'Token ' + auth.accessToken } }
         e.preventDefault();
         const targets = e.target;
         try {
-            const response = await axios.post('promoter/supervisor/report/', config, 
+            const response = await axios.post('promoter/record/', config, 
                 {
                     start_date: targets[0].value,
                     end_date: targets[1].value,
@@ -46,24 +52,27 @@ const Supervisor = () => {
         }
     }
     return (
-        <section className='Promoter'>
-            <div className="col">
-                <h3>Reporte de horas supervisor</h3>
-                <div className="row">
-                    <img src={logo} alt='logo' width='48' />
-                    <h2 className='thin'>Uninorte</h2>
-                </div>
-                <form onSubmit={report}>
-                        <FormField key='start_date' label='start_date:' />
-                        <FormField key='end_date' label='end_date' />
-                        <FormField key='supervisor_wake_up_calls' label='supervisor_wake_up_calls' />
-                        <FormField key='supervisor_notes' label='supervisor_notes:' />
-                        <FormField key='promoter' label='promoter:' />
-                        <FormField key='zone' label='zone:' />
-                        <input className='gradient-button' type="submit" value="Registrar" />
+        <div className='col twice' style={{margin: '15px'}}>
+        <div >
+            <section className='Card'>
+                <div className="col">
+                    <h3>Registro de horas</h3>
+                    <form onSubmit={report}>
+                            <Input key='start_date' label='Fecha de inicio:' type='datetime-local' />
+                            <Input key='end_date' label='Fecha de fin' type='datetime-local'/>
+                            <Input key='supervisor_wake_up_calls' label='llamados de atención' />
+                            <Input key='supervisor_notes' label='Notas:' />
+                            <Input key='promoter' label='Promotor:' />
+                            <FormSelect key='zone' label='Zona:'options={zone}  />
+                            <p>{errMsg}</p>
+                            <input className='gradient-button' type="submit" value="Registrar" />
                     </form>
-            </div>
-        </section>
+                </div>
+            </section>
+        </div>
+    </div>
+        
+        
     )
 }
 export default Supervisor

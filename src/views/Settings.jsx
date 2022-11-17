@@ -29,11 +29,11 @@ const Settings = () => {
     };
     const rightContent =
         <div>
-            <h1>Hola {auth.user}!</h1>
+            <h2>Hola {auth.user}!</h2>
             <button className='gradient-button' onClick={logout}>Cerrar sesión</button>
         </div>
     return (
-        <MainPanel title='Ajustes' card1={card1} card2={card2} rightContent={rightContent} />
+        <MainPanel title='Ajustes' rightContent={rightContent} />
     )
 }
 

@@ -14,7 +14,7 @@ const SidebarPromotor = () => {
             <div className='menuItem logo'>
                 <img src={logo} alt='logo' />
             </div>
-            <svg>
+            <svg style={{width: '100%'}}>
                 <defs>
                     <clipPath id="svgPath" >
                         <path d="M45 47C12.2 30.2 4 8.66667 4 0V490C4 469.5 13 451.5 47.5 432C75.1 416.4 83 392.5 83.5 382.5V103C83.5 99.5 86 68 45 47Z" fill="url(#paint0_linear_65_28)" />
