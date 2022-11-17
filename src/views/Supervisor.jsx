@@ -16,7 +16,7 @@ const Supervisor = () => {
     }, [])
 
     const report = async (e) => {
-        const config = { 'headers': { 'Authorization': 'Bearer ' + auth.accessToken } }
+        const config = { 'headers': { 'Authorization': 'Token ' + auth.accessToken } }
         e.preventDefault();
         const targets = e.target;
         try {

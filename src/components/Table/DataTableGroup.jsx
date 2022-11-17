@@ -3,6 +3,9 @@ import { DataGrid } from '@mui/x-data-grid';
 import './DataTable.css'
 
 function createData(id, name, email, description, active) {
+    if (id === 3243) {
+        console.log(id, name, email, description, active);
+    }
     return { id, name, email, description, active };
 }
 
@@ -29,8 +32,8 @@ let rows = [
 
 
 export default function DataTable(props) {
-    if (props.data)
-        rows = props.data.map((user) => createData(user.uuid, user.name, user.email, user.description, !user.active));
+    // if (props.data)
+    //     rows = props.data.map((elem) => createData(elem.id, elem.name, elem.email, elem.description, !elem.active));
     return (
         <article className='Card' >
             <DataGrid

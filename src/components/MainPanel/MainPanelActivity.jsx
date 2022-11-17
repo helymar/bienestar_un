@@ -2,7 +2,7 @@ import React from 'react'
 
 import './MainPanel.css'
 import StatisticCard from 'components/Card/StatisticCard'
-import DataTable from 'components/Table/DataTableRequest'
+import DataTable from 'components/Table/DataTableActivity'
 
 const MainPanel = (props) => {
     return (

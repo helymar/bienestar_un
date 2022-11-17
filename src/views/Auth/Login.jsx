@@ -40,8 +40,8 @@ const Login = () => {
             let accessToken = response.data.token;
             
             setAuth({ user, accessToken });
-            sessionStorage.setItem('accessToken', accessToken);
-            sessionStorage.setItem('user', user ); // TODO remove this, is not safe
+            localStorage.setItem('accessToken', accessToken);
+            localStorage.setItem('user', user); // TODO remove this, is not safe
             setUser('');
             setPwd('');
             setSuccess(true);

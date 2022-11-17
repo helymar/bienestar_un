@@ -3,16 +3,16 @@ import { DataGrid } from '@mui/x-data-grid';
 import './DataTable.css'
 
 function createData(id, title, description, group_id, date_start, date_end, category, status) {
-    return { id, title, description, group_id, date_start, date_end, category, status};
+    return { id, title, description, group_id, date_start, date_end, category, status };
 }
 
 const columns = [
     { field: 'id', headerName: 'id', width: 150 },
     { field: 'title', headerName: 'title', width: 150 },
-    { field: 'description', headerName: 'description'},
-    { field: 'group_id', headerName: 'group',  width: 100 },
-    { field: 'date_start', headerName: 'date start',  width: 150 },
-    { field: 'date_end', headerName: 'date end',  width: 150 },
+    { field: 'description', headerName: 'description' },
+    { field: 'group_id', headerName: 'group', width: 100 },
+    { field: 'date_start', headerName: 'date start', width: 150 },
+    { field: 'date_end', headerName: 'date end', width: 150 },
     { field: 'category', headerName: 'category', width: 100 },
     { field: 'status', headerName: 'status', width: 30 },
 ];
@@ -33,7 +33,7 @@ let rows = [
 
 export default function DataTable(props) {
     if (props.data)
-        rows = props.data.map((user) => createData(user.uuid, user.title, user.description, user.group_id, user.date_start, user.date_end, user.category, user.status));
+        rows = props.data.map((elem) => createData(elem.id, elem.name, elem.description, elem.group_id, elem.date_start, elem.date_end, elem.category, elem.status));
     return (
         <article className='Card' >
             <DataGrid
