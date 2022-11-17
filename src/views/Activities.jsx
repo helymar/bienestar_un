@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useContext } from 'react';
 import AuthContext from 'context/AuthProvider';
 import axios from 'context/axios'
-import MainPanel from 'components/MainPanel/MainPanelRequest';
+import MainPanel from 'components/MainPanel/MainPanelActivity';
 
 const Activities = () => {
     const { auth } = useContext(AuthContext);
@@ -12,7 +12,7 @@ const Activities = () => {
     const [card2, setCard2] = useState({});
 
     const onLoad = async e => {
-        const config = { 'headers': { 'Authorization': 'Bearer ' + auth.accessToken } }
+        const config = { 'headers': { 'Authorization': 'Token ' + auth.accessToken } }
         const response = (await axios.get('accounts/activity/', config)).data;
         console.log(response);
         let contA = 0;

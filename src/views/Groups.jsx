@@ -18,7 +18,7 @@ const Groups = () => {
     }
 
     const onLoad = async e => {
-        const config = { 'headers': { 'Authorization': 'Bearer ' + auth.accessToken } }
+        const config = { 'headers': { 'Authorization': 'Token ' + auth.accessToken } }
         const response = (await axios.get('accounts/group/', config)).data;
         let cont = 0;
         response.forEach(group => {
