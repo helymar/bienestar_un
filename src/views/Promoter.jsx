@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import logo from 'assets/logo.svg'
 import AuthContext from 'context/AuthProvider';
 import axios from 'context/axios'
-import FormField from 'components/Form/Input';
+import Input from 'components/Form/Input';
 
 
 const Promoter = () => {
@@ -52,13 +52,13 @@ const Promoter = () => {
                 <div className="col">
                     <h3>Registro de horas</h3>
                     <form onSubmit={report}>
-                            <FormField key='start_date' label='start_date:' />
-                            <FormField key='end_date' label='end_date' />
-                            <FormField key='was_supervised' label='was_supervised' />
-                            <FormField key='wake_up_calls' label='wake_up_calls:' />
-                            <FormField key='people_called' label='people_called:' />
-                            <FormField key='promoter_notes' label='promoter_notes:' />
-                            <FormField key='zone' label='zone:' />
+                        <Input key='start_date' label='start_date:' />
+                        <Input key='end_date' label='end_date' />
+                        <Input key='was_supervised' label='was_supervised' />
+                        <Input key='wake_up_calls' label='wake_up_calls:' />
+                        <Input key='people_called' label='people_called:' />
+                        <Input key='promoter_notes' label='promoter_notes:' />
+                        <Input key='zone' label='zone:' />
                             <input className='gradient-button' type="submit" value="Registrar" />
                         </form>
                 </div>

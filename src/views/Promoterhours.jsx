@@ -4,8 +4,8 @@ import { useContext } from 'react';
 import AuthContext from 'context/AuthProvider';
 import axios from 'context/axios'
 import MainPanel from 'components/MainPanel/MainPanelPromoterhours';
-import FormField from 'components/FormField';
-import FormSelect from 'components/FormSelect';
+import Input from 'components/Form/Input';
+import Select from 'components/Form/Select';
 
 
 const Promoterhours = () => {
@@ -67,14 +67,14 @@ const Promoterhours = () => {
                 <div className="col">
                     <h3>Registro de horas</h3>
                     <form onSubmit={report}>
-                            <FormField key='start_date' label='Fecha de inicio:' type='datetime-local' />
-                            <FormField key='end_date' label='Fecha de fin' type='datetime-local' />
-                            <FormSelect key='was_supervised' label='Fue supervisado?' options={supervisado} />
+                            <Input key='start_date' label='Fecha de inicio:' type='datetime-local' />
+                            <Input key='end_date' label='Fecha de fin' type='datetime-local' />
+                            <Select key='was_supervised' label='Fue supervisado?' options={supervisado} />
                             
-                            <FormField key='wake_up_calls' label='Numero de llamados de atención:' />
-                            <FormField key='people_called' label='Total personas con llamados de atención:' />
-                            <FormField key='promoter_notes' label='Notas:' />
-                            <FormSelect key='zone' label='Zona:' options={zone}  />
+                            <Input key='wake_up_calls' label='Numero de llamados de atención:' />
+                            <Input key='people_called' label='Total personas con llamados de atención:' />
+                            <Input key='promoter_notes' label='Notas:' />
+                            <Select key='zone' label='Zona:' options={zone} />
                             <p>{errMsg}</p>
                             <input className='gradient-button' type="submit" value="Registrar" />
                         </form>

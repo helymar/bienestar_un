@@ -5,7 +5,7 @@ import logo from 'assets/logo.svg'
 import AuthContext from 'context/AuthProvider';
 import axios from 'context/axios'
 import Input from 'components/Form/Input';
-import FormSelect from 'components/FormSelect';
+import Select from 'components/Form/Select';
 
 const Supervisor = () => {
     const { auth } = useContext(AuthContext);
@@ -63,7 +63,7 @@ const Supervisor = () => {
                             <Input key='supervisor_wake_up_calls' label='llamados de atención' />
                             <Input key='supervisor_notes' label='Notas:' />
                             <Input key='promoter' label='Promotor:' />
-                            <FormSelect key='zone' label='Zona:'options={zone}  />
+                            <Select key='zone' label='Zona:' options={zone} />
                             <p>{errMsg}</p>
                             <input className='gradient-button' type="submit" value="Registrar" />
                     </form>
