@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import logo from 'assets/logo.svg'
 import AuthContext from 'context/AuthProvider';
 import axios from 'context/axios'
-import FormField from 'components/FormField';
+import FormField from 'components/Form/Input';
 
 
 const Promoter = () => {
