@@ -18,6 +18,7 @@ import SidebarAdmin from 'components/sidebar/SidebarAdmin';
 import SidebarPromotor from 'components/sidebar/SidebarPromotor';
 import SidebarSupervisor from 'components/sidebar/SidebarSupervisor';
 import SidebarGrupo from 'components/sidebar/SidebarGrupo';
+import Promoterhours from 'views/Promoterhours';
 import Users from 'views/Users';
 
 
@@ -50,8 +51,9 @@ function App() {
             <SidebarPromotor />
             <Routes>
               <Route path='/' element={<Dashboard />} />
-              <Route path='/promoter' element={<Promoter />} />
               <Route path='/settings' element={<Settings />} />
+              <Route path='/hours' element={<Promoterhours />} />
+               <Route path='/hourssuper' element={<Supervisor />} />
             </Routes>
           </BrowserRouter>
         </section>
@@ -89,7 +91,7 @@ function App() {
             </BrowserRouter>
           </section>
         )
-        : auth.role == 'administrador' 
+        :
         (
           <section className='AppGlass'>
             <BrowserRouter>
@@ -100,8 +102,8 @@ function App() {
                 <Route path='/activities' element={<Activities />} />
                 <Route path='/reports' element={<Reports />} />
                 <Route path='/settings' element={<Settings />} />
-                <Route path='/supervisor' element={<supervisor />} />
-                <Route path='/promoter' element={<promoter />} />
+                <Route path='/supervisor' element={<Supervisor />} />
+                <Route path='/promoter' element={<Promoter />} />
                 <Route path='*' element={<Dashboard />} />
               </Routes>
             </BrowserRouter>
