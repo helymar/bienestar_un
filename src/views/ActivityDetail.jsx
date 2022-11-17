@@ -88,6 +88,7 @@ const ActivityDetail = () => {
     useEffect(() => { get(); }, [])
     return (
         <section className='Activity' style={{ overflow: 'scroll', padding: 30 }}>
+            <a href='/activities' className='gradient-link'>Regresar</a>
             <form onSubmit={update}>
                 <Input _key='code' label='Id' value={activity.ext_id}
                     onChange={(e) => setActivity(Activity => ({ ...Activity, ...{ 'ext_id': e.target.value } }))} />
