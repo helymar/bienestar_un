@@ -74,6 +74,22 @@ button.gradient-button {
   box-shadow: 0 0;
 }
 
+a.gradient-link {
+  position: relative;
+  /* text-decoration: underline; */
+  text-underline-position: under;
+}
+
+a.gradient-link::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  width: 140%;
+  left: 0;
+  height: 2px;
+  border-radius: 5px;
+  background: linear-gradient(95deg, var(--primary) 0%, var(--secondary) 50%, var(--primary) 100%);
+}
 input[type=submit].gradient-button,
 button.gradient-button:hover {
   background-position: 75% 100%;

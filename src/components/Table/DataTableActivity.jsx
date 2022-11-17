@@ -5,23 +5,23 @@ import { DataGrid } from '@mui/x-data-grid';
 import './DataTable.css'
 
 
-function createData(id, title, description, group_id, date_start, date_end, category, status) {
-    return { id, title, description, group_id, date_start, date_end, category, status };
+function createData(id, name, description, group_id, date_start, date_end, category, status) {
+    return { id, name, description, group_id, date_start, date_end, category, status };
 }
 
 const columns = [
     {
-        field: 'id', headerName: 'Id', width: 150, renderCell: (activity) => (
-            <Link to={`./${activity.value}/`}>{activity.value}</Link>
+        field: 'id', headerName: 'Id', width: 60, renderCell: (activity) => (
+            <Link to={`./${activity.value}/`} className="gradient-link">{activity.value}</Link>
         )
     },
-    { field: 'name', headerName: 'Nombre', width: 150 },
+    { field: 'name', headerName: 'Nombre', width: 200 },
     { field: 'description', headerName: 'Descripción' },
-    { field: 'group_id', headerName: 'group', width: 100 },
-    { field: 'date_start', headerName: 'date start', width: 150 },
-    { field: 'date_end', headerName: 'date end', width: 150 },
-    { field: 'category', headerName: 'category', width: 100 },
-    { field: 'status', headerName: 'status', width: 30 },
+    { field: 'group_id', headerName: 'Grupo', width: 100 },
+    { field: 'date_start', headerName: 'Fecha de inicio', width: 150 },
+    { field: 'date_end', headerName: 'Fecha de finalización', width: 150 },
+    { field: 'category', headerName: 'Categoría', width: 100 },
+    { field: 'status', headerName: 'Estado', width: 100 },
 ];
 let rows = [];
 
