@@ -11,11 +11,23 @@ const Supervisor = () => {
     const { auth } = useContext(AuthContext);
     const [errMsg, setErrMsg] = useState('');
     const [zone, setzone] = useState({});
+    const [promoter, setpromoter] = useState({});
     const config = { 'headers': { 'Authorization': 'Token ' + auth.accessToken } }
 
     async function loadzones() {
-        const response = (await axios.get('/promoter/zone/', config)).data;
+        let promoter = [];
+        const response = (await axios.get('promoter/zone/', config)).data;
         setzone(response);
+        const response2 = (await axios.get('accounts/?role=promotor', config)).data;
+
+        response2.map((item) => {
+            item.name = item.first_name + ' ' + item.last_name;
+            item.id = item.id;
+            promoter.push(item);
+        })
+
+        console.log(promoter);
+        setpromoter(promoter);
     }
     useEffect(() => {
         loadzones();
@@ -26,7 +38,7 @@ const Supervisor = () => {
         e.preventDefault();
         const targets = e.target;
         try {
-            const response = await axios.post('promoter/record/', config, 
+            const response = await axios.post('promoter/record/', 
                 {
                     start_date: targets[0].value,
                     end_date: targets[1].value,
@@ -35,7 +47,7 @@ const Supervisor = () => {
                     promoter: targets[4].value,
                     zone: targets[5].value,
 
-                }
+                }, config
             )
             console.log(response);
         } catch (error) {
@@ -62,7 +74,7 @@ const Supervisor = () => {
                             <Input key='end_date' label='Fecha de fin' type='datetime-local'/>
                             <Input key='supervisor_wake_up_calls' label='llamados de atención' />
                             <Input key='supervisor_notes' label='Notas:' />
-                            <Input key='promoter' label='Promotor:' />
+                            <Select key='promoter' label='Promotor:' options={promoter} />
                             <Select key='zone' label='Zona:' options={zone} />
                             <p>{errMsg}</p>
                             <input className='gradient-button' type="submit" value="Registrar" />

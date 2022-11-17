@@ -21,6 +21,10 @@ import SidebarSupervisor from 'components/sidebar/SidebarSupervisor';
 import SidebarGrupo from 'components/sidebar/SidebarGrupo';
 import Promoterhours from 'views/Promoterhours';
 import Users from 'views/Users';
+import DashboardPromoter from 'views/Homepromoter';
+import Homesupervisor  from 'views/Homesupervisor';
+import Activitiesgrupo from 'views/Activitiesgrupo';
+import ActivityDetailgrupo from 'views/ActivityDetailgrupo';
 
 
 function App() {
@@ -45,12 +49,13 @@ function App() {
         )
         :
         auth.role == 'promotor' ?
+       
         (
           <section className='AppGlass'>
           <BrowserRouter>
             <SidebarPromotor />
             <Routes>
-              <Route path='/' element={<Dashboard />} />
+              <Route path='/' element={<DashboardPromoter />} />
               <Route path='/settings' element={<Settings />} />
               <Route path='/hours' element={<Promoterhours />} />
             </Routes>
@@ -65,13 +70,9 @@ function App() {
               <SidebarGrupo />
               <Routes>
                 <Route path='/' element={<Dashboard />} />
-                <Route path='/users' element={<Users />} />
-                <Route path='/groups' element={<Groups />} />
-                <Route path='/activities' element={<Activities />} />
-                <Route path='/reports' element={<Reports />} />
+                <Route path='/activities' element={<Activitiesgrupo />} />
+                <Route path='/activities/:id' element={<ActivityDetailgrupo />} />
                 <Route path='/settings' element={<Settings />} />
-                <Route path='/supervisor' element={<Supervisor />} />
-                <Route path='/promoter' element={<Promoter />} />
               </Routes>
             </BrowserRouter>
           </section>
@@ -83,14 +84,14 @@ function App() {
             <BrowserRouter>
               <SidebarSupervisor />
               <Routes>
-                <Route path='/' element={<Dashboard />} />
+                <Route path='/' element={<Homesupervisor />} />
                 <Route path='/supervisor' element={<Supervisor />} />
                 <Route path='/settings' element={<Settings />} />
               </Routes>
             </BrowserRouter>
           </section>
         )
-              : // Admin
+        :
         (
           <section className='AppGlass'>
             <BrowserRouter>
