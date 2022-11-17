@@ -53,7 +53,6 @@ function App() {
               <Route path='/' element={<Dashboard />} />
               <Route path='/settings' element={<Settings />} />
               <Route path='/hours' element={<Promoterhours />} />
-               <Route path='/hourssuper' element={<Supervisor />} />
             </Routes>
           </BrowserRouter>
         </section>

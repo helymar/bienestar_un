@@ -26,7 +26,7 @@ const Supervisor = () => {
         e.preventDefault();
         const targets = e.target;
         try {
-            const response = await axios.post('promoter/supervisor/report/', config, 
+            const response = await axios.post('promoter/record/', config, 
                 {
                     start_date: targets[0].value,
                     end_date: targets[1].value,
@@ -64,6 +64,7 @@ const Supervisor = () => {
                             <FormField key='supervisor_notes' label='Notas:' />
                             <FormField key='promoter' label='Promotor:' />
                             <FormSelect key='zone' label='Zona:'options={zone}  />
+                            <p>{errMsg}</p>
                             <input className='gradient-button' type="submit" value="Registrar" />
                     </form>
                 </div>

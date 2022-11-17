@@ -12,13 +12,11 @@ const Promoterhours = () => {
     const { auth } = useContext(AuthContext);
     const [data, setData] = useState([]);
     const [zone, setzone] = useState({});
-    const [card2, setCard2] = useState({});
     const [total, setTotal] = useState(0);
     const config = { 'headers': { 'Authorization': 'Token ' + auth.accessToken } }
     const [errMsg, setErrMsg] = useState('');
     const supervisado = [{id:'true', name:'Si'},{id:'false', name:'No'}];
-    let contP = 0;
-    let contT = 0;
+    
 
     async function loadPage(page) {
         const response = (await axios.get('promoter/record/pending/?page=' + page, config)).data;
@@ -34,7 +32,7 @@ const Promoterhours = () => {
         e.preventDefault();
         const targets = e.target;
         try {
-            const response = await axios.post('promoter/promoter/report/', config, 
+            const response = await axios.post('promoter/record/', config, 
                 {
                     start_date: targets[0].value,
                     end_date: targets[1].value,
@@ -71,12 +69,13 @@ const Promoterhours = () => {
                     <form onSubmit={report}>
                             <FormField key='start_date' label='Fecha de inicio:' type='datetime-local' />
                             <FormField key='end_date' label='Fecha de fin' type='datetime-local' />
-                            <FormSelect key='was_supervised' label='Fue supervidado?' options={supervisado} />
+                            <FormSelect key='was_supervised' label='Fue supervisado?' options={supervisado} />
                             
                             <FormField key='wake_up_calls' label='Numero de llamados de atención:' />
                             <FormField key='people_called' label='Total personas con llamados de atención:' />
                             <FormField key='promoter_notes' label='Notas:' />
                             <FormSelect key='zone' label='Zona:' options={zone}  />
+                            <p>{errMsg}</p>
                             <input className='gradient-button' type="submit" value="Registrar" />
                         </form>
                 </div>
