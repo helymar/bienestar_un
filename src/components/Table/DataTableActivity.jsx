@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import { DataGrid } from '@mui/x-data-grid';
 
 import './DataTable.css'
@@ -8,7 +10,11 @@ function createData(id, title, description, group_id, date_start, date_end, cate
 }
 
 const columns = [
-    { field: 'id', headerName: 'Id', width: 150 },
+    {
+        field: 'id', headerName: 'Id', width: 150, renderCell: (activity) => (
+            <Link to={`./${activity.value}/`}>{activity.value}</Link>
+        )
+    },
     { field: 'name', headerName: 'Nombre', width: 150 },
     { field: 'description', headerName: 'Descripción' },
     { field: 'group_id', headerName: 'group', width: 100 },

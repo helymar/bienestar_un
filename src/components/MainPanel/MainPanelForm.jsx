@@ -3,7 +3,6 @@ import React from 'react'
 import './MainPanel.css'
 import StatisticCard from 'components/Card/StatisticCard'
 import DataTable from 'components/Table/DataTableGroup'
-import FormField from 'components/FormField'
 
 const MainPanel = (props) => {
     return (

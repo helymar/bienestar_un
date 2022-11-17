@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import logo from 'assets/logo.svg'
 import AuthContext from 'context/AuthProvider';
 import axios from 'context/axios'
-import FormField from 'components/FormField';
+import Input from 'components/Form/Input';
 import FormSelect from 'components/FormSelect';
 
 const Supervisor = () => {
@@ -58,11 +58,11 @@ const Supervisor = () => {
                 <div className="col">
                     <h3>Registro de horas</h3>
                     <form onSubmit={report}>
-                            <FormField key='start_date' label='Fecha de inicio:' type='datetime-local' />
-                            <FormField key='end_date' label='Fecha de fin' type='datetime-local'/>
-                            <FormField key='supervisor_wake_up_calls' label='llamados de atención' />
-                            <FormField key='supervisor_notes' label='Notas:' />
-                            <FormField key='promoter' label='Promotor:' />
+                            <Input key='start_date' label='Fecha de inicio:' type='datetime-local' />
+                            <Input key='end_date' label='Fecha de fin' type='datetime-local'/>
+                            <Input key='supervisor_wake_up_calls' label='llamados de atención' />
+                            <Input key='supervisor_notes' label='Notas:' />
+                            <Input key='promoter' label='Promotor:' />
                             <FormSelect key='zone' label='Zona:'options={zone}  />
                             <p>{errMsg}</p>
                             <input className='gradient-button' type="submit" value="Registrar" />

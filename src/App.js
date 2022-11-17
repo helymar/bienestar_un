@@ -5,6 +5,7 @@ import { useCookies } from 'react-cookie';
 
 import 'App.css';
 import Activities from 'views/Activities';
+import ActivityDetail from 'views/ActivityDetail';
 import AuthContext from 'context/AuthProvider';
 import Dashboard from 'views/Home';
 import Groups from 'views/Groups';
@@ -44,7 +45,6 @@ function App() {
         )
         :
         auth.role == 'promotor' ?
-       
         (
           <section className='AppGlass'>
           <BrowserRouter>
@@ -90,7 +90,7 @@ function App() {
             </BrowserRouter>
           </section>
         )
-        :
+              : // Admin
         (
           <section className='AppGlass'>
             <BrowserRouter>
@@ -99,6 +99,7 @@ function App() {
                 <Route path='/users' element={<Users />} />
                 <Route path='/groups' element={<Groups />} />
                 <Route path='/activities' element={<Activities />} />
+                      <Route path='/activities/:id' element={<ActivityDetail />} />
                 <Route path='/reports' element={<Reports />} />
                 <Route path='/settings' element={<Settings />} />
                 <Route path='/supervisor' element={<Supervisor />} />
