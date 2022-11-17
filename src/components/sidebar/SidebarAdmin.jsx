@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 
 import './Sidebar.css'
 import logo from 'assets/logo.svg'
-import { SidebarData } from 'Data'
+import { SidebarData } from 'DataAdmin'
 
-const Sidebar = () => {
+const SidebarAdmin = () => {
     return (
 
         <div className='Sidebar'>
@@ -43,4 +43,4 @@ const Sidebar = () => {
     )
 }
 
-export default Sidebar
+export default SidebarAdmin
