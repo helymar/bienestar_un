@@ -14,7 +14,10 @@ import Reports from 'views/Reports';
 import Settings from 'views/Settings';
 import Supervisor from 'views/Supervisor';
 import Promoter from 'views/Promoter';
-import Sidebar from 'components/sidebar/Sidebar';
+import SidebarAdmin from 'components/sidebar/SidebarAdmin';
+import SidebarPromotor from 'components/sidebar/SidebarPromotor';
+import SidebarSupervisor from 'components/sidebar/SidebarSupervisor';
+import SidebarGrupo from 'components/sidebar/SidebarGrupo';
 import Users from 'views/Users';
 
 
@@ -39,11 +42,26 @@ function App() {
         </BrowserRouter>
         )
         :
-
+        auth.role == 'promotor' ?
+       
+        (
+          <section className='AppGlass'>
+          <BrowserRouter>
+            <SidebarPromotor />
+            <Routes>
+              <Route path='/' element={<Dashboard />} />
+              <Route path='/promoter' element={<Promoter />} />
+              <Route path='/settings' element={<Settings />} />
+            </Routes>
+          </BrowserRouter>
+        </section>
+        )
+        :
+        auth.role == 'grupo' ?
         (
           <section className='AppGlass'>
             <BrowserRouter>
-              <Sidebar />
+              <SidebarGrupo />
               <Routes>
                 <Route path='/' element={<Dashboard />} />
                 <Route path='/users' element={<Users />} />
@@ -51,8 +69,38 @@ function App() {
                 <Route path='/activities' element={<Activities />} />
                 <Route path='/reports' element={<Reports />} />
                 <Route path='/settings' element={<Settings />} />
-                <Route path='/supervisor' element={<supervisor />} />
-                <Route path='/promoter' element={<promoter />} />
+                <Route path='/supervisor' element={<Supervisor />} />
+                <Route path='/promoter' element={<Promoter />} />
+              </Routes>
+            </BrowserRouter>
+          </section>
+        )
+        :
+        auth.role == 'supervisor' ?
+        (
+          <section className='AppGlass'>
+            <BrowserRouter>
+              <SidebarSupervisor />
+              <Routes>
+                <Route path='/' element={<Dashboard />} />
+                <Route path='/supervisor' element={<Supervisor />} />
+                <Route path='/settings' element={<Settings />} />
+              </Routes>
+            </BrowserRouter>
+          </section>
+        )
+        : auth.role == 'administrador' 
+        (
+          <section className='AppGlass'>
+            <BrowserRouter>
+              <SidebarAdmin />
+              <Routes>
+                <Route path='/' element={<Dashboard />} />
+                <Route path='/users' element={<Users />} />
+                <Route path='/groups' element={<Groups />} />
+                <Route path='/activities' element={<Activities />} />
+                <Route path='/reports' element={<Reports />} />
+                <Route path='/settings' element={<Settings />} />
               </Routes>
             </BrowserRouter>
           </section>

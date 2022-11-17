@@ -38,10 +38,12 @@ const Login = () => {
                 }
             )
             let accessToken = response.data.token;
+            let role = response.data.user.role;
             
-            setAuth({ user, accessToken });
+            setAuth({ user, accessToken, role });
             localStorage.setItem('accessToken', accessToken);
             localStorage.setItem('user', user); // TODO remove this, is not safe
+            localStorage.setItem('role', role);
             setUser('');
             setPwd('');
             setSuccess(true);
