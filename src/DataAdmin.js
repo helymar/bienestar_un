@@ -6,5 +6,4 @@ export const SidebarData = [
     { icon: Groups, route: '/groups' },
     { icon: Speed, route: '/' },
     { icon: AddTask, route: '/activities' },
-    { icon: PendingActions, route: '/reports' },
 ]

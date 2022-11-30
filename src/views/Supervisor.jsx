@@ -17,10 +17,10 @@ const Supervisor = () => {
     async function loadzones() {
         let promoter = [];
         const response = (await axios.get('promoter/zone/', config)).data;
-        setzone(response);
+        setzone(response.results);
         const response2 = (await axios.get('accounts/?role=promotor', config)).data;
 
-        response2.map((item) => {
+        response2.results.map((item) => {
             item.name = item.first_name + ' ' + item.last_name;
             item.id = item.id;
             promoter.push(item);
@@ -50,6 +50,7 @@ const Supervisor = () => {
                 }, config
             )
             console.log(response);
+            setErrMsg(response.statusText);
         } catch (error) {
             console.log(error);
             if (!error?.response) {

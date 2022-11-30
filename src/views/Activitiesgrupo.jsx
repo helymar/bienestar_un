@@ -18,6 +18,7 @@ const Activitiesgrupo = () => {
 
     async function loadPage(page) {
         const response = (await axios.get('accounts/activity/?page=' + page, config)).data;
+        console.log(response);
         response.results.forEach(request => {
             if (request.status === 'Aprobado') contA++;
             if (request.status === 'Pendiente') contP++;

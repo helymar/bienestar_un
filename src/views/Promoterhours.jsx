@@ -28,10 +28,10 @@ const Promoterhours = () => {
     async function loadzones() {
         let supervi = [];
         const response = (await axios.get('promoter/zone/', config)).data;
-        setzone(response);
+        setzone(response.results);
         const response2 = (await axios.get('accounts/?role=supervisor', config)).data;
 
-        response2.map((item) => {
+        response2.results.map((item) => {
             item.name = item.first_name + ' ' + item.last_name;
             item.id = item.id;
             supervi.push(item);
@@ -49,14 +49,16 @@ const Promoterhours = () => {
                     start_date: targets[0].value,
                     end_date: targets[1].value,
                     was_supervised: targets[2].value,
-                    wake_up_calls: targets[3].value,
-                    people_called: targets[4].value,
-                    promoter_notes: targets[5].value,
-                    zone: targets[6].value,
+                    supervisor: targets[3].value,
+                    wake_up_calls: targets[4].value,
+                    people_called: targets[5].value,
+                    promoter_notes: targets[6].value,
+                    zone: parseInt(targets[7].value, 10),
 
                 }, config
             )
             console.log(response);
+            setErrMsg(response.statusText);
         } catch (error) {
             console.log(error);
             if (!error?.response) {

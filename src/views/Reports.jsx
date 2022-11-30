@@ -1,6 +1,6 @@
 import React from 'react'
 
-import MainPanel from 'components/MainPanel/MainPanel';
+import MainPanel from 'components/MainPanel/MainPanelSentings';
 
 const Reports = () => {
     const card1 = {

@@ -27,6 +27,9 @@ export default function DataTable(props) {
                 pageSize={10}
                 rowsPerPageOptions={[5]}
                 checkboxSelection
+                paginationMode="server"
+                rowCount={props.total}
+                onPageChange={(newPage) => props.loadPage(newPage + 1)}
             />
         </article>
     );

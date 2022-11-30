@@ -4,10 +4,11 @@ import { useContext } from 'react';
 import AuthContext from 'context/AuthProvider';
 import axios from 'context/axios'
 import MainPanel from 'components/MainPanel/MainPanel';
-
 const Users = () => {
     const { auth } = useContext(AuthContext);
     const [data, setData] = useState([]);
+    const [total, setTotal] = useState(0);
+
     const card1 = {
         title: 'Administrativos',
         firstNumber: 24,
@@ -23,19 +24,21 @@ const Users = () => {
         secondText: 'activos en los últimos 7 días'
     }
 
-    const onLoad = async e => {
-        const config = { 'headers': { 'Authorization': 'Token ' + auth.accessToken } }
-        const response = (await axios.get('accounts/?role=administrador,promotor,supervisor', config)).data;
-        setData(response);
+    const config = { 'headers': { 'Authorization': 'Token ' + auth.accessToken } }
+
+
+    async function loadPage(page) {
+        const response = (await axios.get('accounts/?page=' + page+'&role=administrador,promotor,supervisor', config)).data;
+        let cont = 0;
+
+        setTotal(response.count);
+        setData(response.results);
     }
-
-    useEffect(() => {
-        onLoad();
-    }, [])
-
+    useEffect(() => { loadPage(1); }, [])
     return (
-        <MainPanel title='Usuarios' card1={card1} card2={card2} data={data} />
+        <MainPanel title='Usuarios' card1={card1} card2={card2} data={data}  loadPage={loadPage} total={total}/>
     )
 }
+
 
 export default Users

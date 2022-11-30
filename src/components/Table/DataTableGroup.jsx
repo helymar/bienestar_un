@@ -1,12 +1,12 @@
+import { Link } from 'react-router-dom';
+
 import { DataGrid } from '@mui/x-data-grid';
 
 import './DataTable.css'
 
-function createData(id, name, email, description, active) {
-    if (id === 3243) {
-        console.log(id, name, email, description, active);
-    }
-    return { id, name, email, description, active };
+
+function createData(id, name, email, active) {
+    return {id, name, email, active};
 }
 
 const columns = [
@@ -26,6 +26,9 @@ export default function DataTable(props) {
                 rows={rows}
                 columns={columns}
                 pageSize={10}
+                paginationMode="server"
+                rowCount={props.total}
+                onPageChange={(newPage) => props.loadPage(newPage + 1)}
                 rowsPerPageOptions={[5]}
                 checkboxSelection
             />

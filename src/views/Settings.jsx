@@ -2,7 +2,7 @@ import { React, useContext } from 'react';
 
 import axios from 'context/axios'
 import AuthContext from 'context/AuthProvider';
-import MainPanel from 'components/MainPanel/MainPanel';
+import MainPanel from 'components/MainPanel/MainPanelSentings';
 
 const Settings = () => {
     const { setAuth } = useContext(AuthContext);

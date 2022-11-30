@@ -25,6 +25,7 @@ import DashboardPromoter from 'views/Homepromoter';
 import Homesupervisor  from 'views/Homesupervisor';
 import Activitiesgrupo from 'views/Activitiesgrupo';
 import ActivityDetailgrupo from 'views/ActivityDetailgrupo';
+import ActivityCreate from 'views/ActivityCreate';
 
 
 function App() {
@@ -73,6 +74,7 @@ function App() {
                 <Route path='/activities' element={<Activitiesgrupo />} />
                 <Route path='/activities/:id' element={<ActivityDetailgrupo />} />
                 <Route path='/settings' element={<Settings />} />
+                <Route path='/create' element={<ActivityCreate />} />
               </Routes>
             </BrowserRouter>
           </section>
@@ -101,7 +103,6 @@ function App() {
                 <Route path='/groups' element={<Groups />} />
                 <Route path='/activities' element={<Activities />} />
                       <Route path='/activities/:id' element={<ActivityDetail />} />
-                <Route path='/reports' element={<Reports />} />
                 <Route path='/settings' element={<Settings />} />
                 <Route path='/supervisor' element={<Supervisor />} />
                 <Route path='/promoter' element={<Promoter />} />

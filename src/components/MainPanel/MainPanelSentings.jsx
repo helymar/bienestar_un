@@ -2,7 +2,7 @@ import React from 'react'
 
 import './MainPanel.css'
 import StatisticCard from 'components/Card/StatisticCard'
-import DataTable from 'components/Table/DataTableGroup'
+import DataTable from 'components/Table/DataTable'
 
 const MainPanel = (props) => {
     return (
@@ -11,12 +11,8 @@ const MainPanel = (props) => {
                 <h1>{props.title}</h1>
             </div>
             <div className='row'>
-                <div className='col twice'>
-                    <StatisticCard stat={props.card1} />
-                    <StatisticCard stat={props.card2} />
-                </div>
                 {props.rightContent ? props.rightContent :
-                    <DataTable data={props.data} loadPage={props.loadPage} total={props.total}  />}
+                    <DataTable data={props.data} />}
             </div>
         </section>
     )
