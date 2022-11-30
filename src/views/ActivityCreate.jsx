@@ -43,7 +43,7 @@ const ActivityDetail = () => {
         {name: 'No encontrado',
         id: 'nan'}
          ];
-        const notas = [{'Notas Orieta': 'na'}, {'Notas Marcela': 'Recibido'}]
+        const notas = {"text": ""}
     async function get() {
        
         const card1 = {
@@ -90,8 +90,8 @@ const ActivityDetail = () => {
             send_email: (targets[18].value === 'true'), 
         }
         console.log(activity);
-        const response = (await axios.post('accounts/activity/', activity, config)).data;
-        console.log(response);
+        const response = (await axios.post('accounts/activity/', activity, config));
+        setErrMsg(response.statusText);
         const card1 = {
             title: 'Recibidas',
             firstNumber: 100,
